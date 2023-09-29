@@ -8,32 +8,34 @@ const api = {
 
 export const App = () => {
   const [search, setSearch] = useState('') // estado da pesquisa setado sem valor inicial
-  const [weather, setWeather] = useState({})
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [weather, setWeather] = useState<any>({})
 
   const searchPressed = () => {
     fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`) // chamando a func fetch e passando as info da const api (base e key)
       .then((res) => res.json()) // transforma o res em json
       .then((result) => {
-        setWeather(result)
-        console.log(setWeather)
-        console.log(weather)
+        setWeather(result) // passando o result para o estado SetWeather
       })
   }
-
+  console.log(weather)
   return (
     <>
       <Header>
-        <form className="form">
-          <h1>Storm App</h1>
+        <h1>Storm App</h1>
+        <div className="form">
           <input
             type="text"
             placeholder="digite sua cidade"
             onChange={(e) => setSearch(e.target.value)} // função onChange pegando o valor do input e setando pra variavel setSearch
-          ></input>
-          <button onClick={searchPressed}>Search</button>
-          <p></p>
-          <p></p>
-        </form>
+          />
+
+          <button type="submit" onClick={searchPressed}>
+            Search
+          </button>
+          <p>{weather?.name}</p>
+          <p>{weather?.main?.temp}ºC</p>
+        </div>
       </Header>
     </>
   )
