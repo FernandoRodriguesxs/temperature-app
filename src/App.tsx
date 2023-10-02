@@ -22,11 +22,10 @@ export const App = () => {
   return (
     <>
       <Header>
-        <h1>Storm App</h1>
         <div className="form">
           <input
             type="text"
-            placeholder="digite sua cidade"
+            placeholder="Digite sua Cidade"
             onChange={(e) => setSearch(e.target.value)} // função onChange pegando o valor do input e setando pra variavel setSearch
           />
 
@@ -35,6 +34,7 @@ export const App = () => {
           </button>
           <p>{weather?.name}</p>
           <p>{weather?.main?.temp}ºC</p>
+          <p>{weather.weather?.[0].main}</p>
         </div>
       </Header>
     </>
