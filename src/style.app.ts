@@ -41,7 +41,7 @@ export const Header = styled.header`
       display: flex;
       justify-content: center;
 
-      background-color: #33ff57;
+      background-color: #23c438;
 
       padding: 18px;
       width: 90%;
